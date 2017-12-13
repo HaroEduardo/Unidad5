@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <title>#{str.excursionListTitle}</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="content">
+                <h5>#{str.excursionListTitle}</h5>
+                <b:form>
+                    <b:commandButton value="#{str.buttonAdd}" action="#{excursionBean.start()}" look="primary"  style="width:200px"/>
+                </b:form>
+                <b:dataTable value="#{excursionBean.excursions}" var="m">
+                    <b:dataTableColumn label="#{str.action}">
+                        <h:form>
+                            <b:commandButton look="success" value="#{str.buttonEdit}" action="#{excursionBean.edit(m)}"/>
+                        </h:form>
+                    </b:dataTableColumn>
+                    <b:dataTableColumn label="#{str.excursionNameHeader}">
+                        <p:outputLabel value="#{m.excursionName}"/>
+                    </b:dataTableColumn>
+                    
+                    <b:dataTableColumn label="#{str.destinationHeader}">
+                        <p:outputLabel value="#{m.destination}"/>
+                    </b:dataTableColumn>
+                    
+                    <b:dataTableColumn label="#{str.activityHeader}">
+                        <p:outputLabel value="#{m.activity}"/>
+                    </b:dataTableColumn>
+                    
+                    <b:dataTableColumn label="#{str.transportHeader}">
+                        <p:outputLabel value="#{m.transport}"/>
+                    </b:dataTableColumn>
+                    
+                    <b:dataTableColumn label="#{str.hotelHeader}">
+                        <p:outputLabel value="#{m.hotel}"/>
+                    </b:dataTableColumn>
+                    
+                    <b:dataTableColumn label="#{str.choferHeader}">
+                        <p:outputLabel value="#{m.chofer}"/>
+                    </b:dataTableColumn>
+                    
+                    <b:dataTableColumn label="#{str.guideHeader}">
+                        <p:outputLabel value="#{m.guide}"/>
+                    </b:dataTableColumn>
+                    
+                    <b:dataTableColumn label="#{str.costHeader}">
+                        <p:outputLabel value="#{m.cost}"/>
+                    </b:dataTableColumn>
+                    
+                    <b:dataTableColumn label="#{str.studentHeader}">
+                        <p:outputLabel value="#{m.qualification.student}"/>
+                    </b:dataTableColumn>
+                    
+                    
+                </b:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

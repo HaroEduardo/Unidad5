@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    
+    <h:head>
+        <title>#{str.excursionFormTitle}</title>
+    </h:head>
+    
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="content">
+                <h5>#{str.excursionFormHeader}</h5>
+                <b:panel look="primary" title="#{str.excursionLegendForm}">
+                    <b:form>
+                        
+                        
+                        
+                        
+                        
+                        <b:inputText placeholder="#{str.excursionNamePrompt}" value="#{excursionBean.excursion.excursionName}" style="width:400px"></b:inputText>
+                        <b:inputText placeholder="#{str.destinationPrompt}" value="#{excursionBean.excursion.destination}" style="width:400px"></b:inputText>
+                        <b:inputText placeholder="#{str.activityPrompt}" value="#{excursionBean.excursion.activity}" style="width:400px"></b:inputText>
+                        <b:inputText placeholder="#{str.transportPrompt}" value="#{excursionBean.excursion.transport}" style="width:400px"></b:inputText>
+                        <b:inputText placeholder="#{str.hotelPrompt}" value="#{excursionBean.excursion.hotel}" style="width:400px"></b:inputText>
+                        <b:inputText placeholder="#{str.choferPrompt}" value="#{excursionBean.excursion.chofer}" style="width:400px"></b:inputText>
+                        <b:inputText placeholder="#{str.guidePrompt}" value="#{excursionBean.excursion.guide}" style="width:400px"></b:inputText>
+                        <b:inputText placeholder="#{str.costPrompt}" value="#{excursionBean.excursion.cost}" style="width:400px"></b:inputText>
+                        
+                        
+                        <b:selectOneMenu value="#{excursionBean.excursion.qualification.idQualification}" style="width:400px">
+                                <f:selectItems value="#{excursionBean.qualifications}" var="m" 
+                                               itemLabel="#{m.student}" itemValue="#{m.idQualification}"></f:selectItems>                                     
+                            </b:selectOneMenu>
+                        
+                        
+                        
+                        <b:commandButton look="success" value="#{str.buttonSave}" action="#{excursionBean.save()}" style="width:120px"></b:commandButton>
+                        <b:commandButton look="danger" value="#{str.buttonDelete}" action="#{excursionBean.delete()}" style="width:120px"></b:commandButton>
+                        <b:commandButton look="info" value="#{str.buttonCancel}" action="#{excursionBean.cancel()}" style="width:120px"></b:commandButton>
+                        </b:panelGrid>
+                    </b:form>
+                </b:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
